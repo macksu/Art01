@@ -1,0 +1,6 @@
+﻿  Block.cpp
+  Tetris.cpp
+C:\YingshiDownload\GitStore\Art01\Tetris.cpp(13,12): warning C4244: “参数”: 从“time_t”转换到“unsigned int”，可能丢失数据
+  main.cpp
+  正在生成代码...
+  我的俄罗斯方块.vcxproj -> C:\YingshiDownload\GitStore\Art01\x64\Debug\我的俄罗斯方块.exe

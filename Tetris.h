@@ -5,5 +5,15 @@ public:
 	Tetris(int rows, int cols, int left, int top, int BlockSize);
 	void Init();
 	void play();
+
+private:
+	void KeyEvent();
+	void updatewindow();
+	int getDelay();  //返回距离上次调用函数的间隔时间（ms）
+	void drop();    //方块下降
+	void ClearLine(); //清行
+private:
+	int delay;  //延迟时间
+	bool update;  //是否更新
 };
 
