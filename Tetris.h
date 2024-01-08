@@ -2,6 +2,7 @@
 #include <vector>
 using namespace std;
 #include <graphics.h>
+#include "Block.h"
 class Tetris
 {
 public:

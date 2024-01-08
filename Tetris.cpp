@@ -78,10 +78,27 @@ void Tetris::KeyEvent()
 void Tetris::updatewindow()
 {
 	putimage(0, 0, &imgBg);  //绘制图片
+	//测试代码
+	//Block block;
+	//block.draw(leftMargin, topMargin);
 }
 
+//第一次调用，返回0
+//返回距离上一次调用 间隔时间 ms
 int Tetris::getDelay()
 {
+	static unsigned long long lastTime = 0;
+
+	unsigned long long currentTime = GetTickCount();
+	if (lastTime == 0) {
+		lastTime = currentTime;
+		return 0;
+	}
+	else {
+	int ret = 	currentTime - lastTime;
+	lastTime = currentTime;
+	return ret;
+	}
 	return 0;
 }
 
