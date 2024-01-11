@@ -32,5 +32,8 @@ private:
 	int topMargin;
 	int blockSize;
 	IMAGE imgBg;
+
+	Block* curBlock;
+	Block* nextBlock; //下一个方块
 };
 

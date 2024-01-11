@@ -47,6 +47,11 @@ void Tetris::Init()
 void Tetris::play()
 {
 	Init();
+
+	nextBlock = new Block;
+	curBlock = nextBlock;
+	nextBlock = new Block;
+
 	int timer = 0;
 	while (1) {
       //接受用户输入
@@ -78,9 +83,19 @@ void Tetris::KeyEvent()
 void Tetris::updatewindow()
 {
 	putimage(0, 0, &imgBg);  //绘制图片
-	//测试代码
-	//Block block;
-	//block.draw(leftMargin, topMargin);
+
+	for (int i = 0; i < rows; i++) {
+		for (int j = 0; j < cols; j++) {
+			if (map[i][j] == 0) continue;
+
+			int x = j * blockSize + leftMargin;
+			int y = i * blockSize + topMargin;
+			putimage(x, y, map[i][j]);
+		}
+	}
+
+	curBlock->draw(leftMargin, topMargin);
+	nextBlock->draw(689, 150);
 }
 
 //第一次调用，返回0
