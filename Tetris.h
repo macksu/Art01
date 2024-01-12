@@ -34,6 +34,7 @@ private:
 	IMAGE imgBg;
 
 	Block* curBlock;
-	Block* nextBlock; //下一个方块
+	Block* nextBlock; //预告方块
+	Block bakBlock;  //当前方块降落过程中，用来备份上一个合法位置的！
 };
 

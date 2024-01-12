@@ -84,18 +84,21 @@ void Tetris::updatewindow()
 {
 	putimage(0, 0, &imgBg);  //绘制图片
 
+	IMAGE** imgs = Block::getImages();
+	BeginBatchDraw();
 	for (int i = 0; i < rows; i++) {
 		for (int j = 0; j < cols; j++) {
 			if (map[i][j] == 0) continue;
 
 			int x = j * blockSize + leftMargin;
 			int y = i * blockSize + topMargin;
-			putimage(x, y, map[i][j]);
+			putimage(x, y, imgs[map[i][j]-1]);
 		}
 	}
 
 	curBlock->draw(leftMargin, topMargin);
 	nextBlock->draw(689, 150);
+	EndBatchDraw();
 }
 
 //第一次调用，返回0
@@ -119,6 +122,15 @@ int Tetris::getDelay()
 
 void Tetris::drop()
 {
+	bakBlock = *curBlock;
+	curBlock->drop();
+	if (!curBlock->blockInMap(map)) {
+		//把这个方块固定
+		bakBlock.solidify(map);
+		delete curBlock;
+		curBlock = nextBlock;
+		nextBlock = new Block;
+	}
 }
 
 void Tetris::ClearLine()

@@ -40,7 +40,9 @@ Block::Block()
 
 void Block::drop()
 {
-
+	for (int i = 0; i < 4; i++) {
+		SmallBlocks[i].row++;
+	}
 }
 
 void Block::moveleftright()
@@ -57,5 +59,43 @@ void Block::draw(int leftMargin, int topMargin)
 		int x = leftMargin + SmallBlocks[i].col * Size;
 		int y = topMargin +  SmallBlocks[i].row * Size;
 		putimage(x, y, img);
+	}
+}
+
+IMAGE** Block::getImages()
+{
+	return imgs;
+}
+
+Block& Block::operator=(const Block& other)
+{
+	// TODO: 在此处插入 return 语句
+	if (this == &other) return *this;
+	this->blockType = other.blockType;
+	for (int i = 0; i < 4; i++) {
+		this->SmallBlocks[i] = other.SmallBlocks[i];
+	}
+	return *this;
+}
+
+bool Block::blockInMap(const vector<vector<int>>&map)
+{
+	int rows = map.size();
+	int cols = map[0].size();
+	for (int i = 0; i < 4; i++) {
+		if (SmallBlocks[i].col < 0 || SmallBlocks[i].col >= cols ||
+			SmallBlocks[i].row < 0 || SmallBlocks[i].row >= rows ||
+			map[SmallBlocks[i].row][SmallBlocks[i].col]) {
+			return false;
+		}
+	}
+	return true;
+}
+
+void Block::solidify(vector<vector<int>>& map)
+{
+	for (int i = 0; i < 4; i++) {
+		//设置标记 
+		map[SmallBlocks[i].row][SmallBlocks[i].col] = blockType;
 	}
 }
