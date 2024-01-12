@@ -19,6 +19,7 @@ public:
     //Point* getSmallBlocks();
 	bool blockInMap(const vector<vector<int>> &map);
 	void solidify(vector<vector<int>>&map);
+	
 
 private:
 	int blockType;  //∑ΩøÈ¿‡–Õ

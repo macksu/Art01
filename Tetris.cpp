@@ -77,7 +77,45 @@ void Tetris::play()
 
 void Tetris::KeyEvent()
 {
-	//to do
+	char ch;   // 0 255
+	bool retateFlag = false;  //是否旋转
+	int dx = 0;
+	if (_kbhit()) {
+		ch = _getch();
+		//如果按下方向键，会自动返回两个字符
+		//如果按下 向上方向键，会先返回 224 72
+	    //         向下                 224 80
+		//         向左                 224 75
+		//         向右                 224 77
+		if (ch == 224) {
+			ch = _getch();
+			switch (ch)
+			{
+			case 72:
+				retateFlag = true;
+				break;
+			case 80:
+				delay = SPEED_QUICK;
+				break;
+			case 75:
+				dx = -1;
+				break;
+			case 77:
+				dx = 1;
+				break;
+			default:
+				break;
+			}
+		}
+	}
+	if (retateFlag) {
+		//实现旋转
+	}
+	if (dx!= 0) {
+		//实现左右移动
+
+	}
+	
 }
 
 void Tetris::updatewindow()
@@ -135,4 +173,9 @@ void Tetris::drop()
 
 void Tetris::ClearLine()
 {
+}
+
+void Tetris::MoveLeftRight(int offset)
+{
+	curBlock->moveleftright();
 }

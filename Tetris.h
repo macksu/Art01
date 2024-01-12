@@ -3,6 +3,7 @@
 using namespace std;
 #include <graphics.h>
 #include "Block.h"
+#include <conio.h>
 class Tetris
 {
 public:
@@ -16,7 +17,7 @@ private:
 	int getDelay();  //返回距离上次调用函数的间隔时间（ms）
 	void drop();    //方块下降
 	void ClearLine(); //清行
-
+	void MoveLeftRight(int offset);
 	
 private:
 	int delay;  //延迟时间
