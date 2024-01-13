@@ -36,7 +36,7 @@ void Tetris::Init()
 	loadimage(&imgBg, "res/bg2.png");
 
 	//初始化游戏区的数据
-	char data[20][10];
+	char map[20][10];
 	for (int i = 0; i < rows; i++) {
 		for (int j = 0; j < cols; j++) {
 			map[i][j] = 0;
@@ -113,7 +113,8 @@ void Tetris::KeyEvent()
 	}
 	if (dx!= 0) {
 		//实现左右移动
-
+		MoveLeftRight(dx);
+		update = true;
 	}
 	
 }
@@ -169,6 +170,7 @@ void Tetris::drop()
 		curBlock = nextBlock;
 		nextBlock = new Block;
 	}
+	delay = SPEED_NORMAL;
 }
 
 void Tetris::ClearLine()
@@ -177,5 +179,11 @@ void Tetris::ClearLine()
 
 void Tetris::MoveLeftRight(int offset)
 {
-	curBlock->moveleftright();
+	bakBlock = *curBlock;
+	curBlock->moveleftright(dx);
+	/*if (!curBlock > blockInMap(map)) {
+		*curBlock = bakBlock;
+
+	}*/
+
 }

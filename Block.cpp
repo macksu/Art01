@@ -32,8 +32,8 @@ Block::Block()
 	//≥ı ºªØSmallBlocks
 	for (int i = 0; i < 4; i++) {
 		int value = blocks[blockType-1][i];
-		SmallBlocks[i].row = value / 2;
-		SmallBlocks[i].col = value % 2;
+		SmallBlocks[i].row = value % 2;
+		SmallBlocks[i].col = value / 2;
 	}
 	img = imgs[blockType - 1];
 }
