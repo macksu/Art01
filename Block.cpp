@@ -29,13 +29,14 @@ Block::Block()
 
 	//随机生成一种俄罗斯方块
 	blockType = 1 + rand() % 7;  // 1 到 7
+	img = imgs[blockType - 1];
 	//初始化SmallBlocks
 	for (int i = 0; i < 4; i++) {
 		int value = blocks[blockType-1][i];
-		SmallBlocks[i].row = value % 2;
-		SmallBlocks[i].col = value / 2;
+		SmallBlocks[i].row = value / 2;
+		SmallBlocks[i].col = value % 2;
 	}
-	img = imgs[blockType - 1];
+	
 }
 
 void Block::drop()
@@ -45,12 +46,21 @@ void Block::drop()
 	}
 }
 
-void Block::moveleftright()
+void Block::moveleftright(int offset)
 {
+	for (int i = 0; i < 4; i++) {
+		SmallBlocks[i].col += offset;
+	}
 }
 
-void Block::retate()
+void Block::rotate()
 {
+	Point p = SmallBlocks[1];
+	for (int i = 0; i < 4; i++) {
+		Point tmp = SmallBlocks[i];
+		SmallBlocks[i].col = p.col - tmp.row + p.row;
+		SmallBlocks[i].row = p.row + tmp.col - p.col;
+	}
 }
 
 void Block::draw(int leftMargin, int topMargin)
@@ -98,4 +108,9 @@ void Block::solidify(vector<vector<int>>& map)
 		//设置标记 
 		map[SmallBlocks[i].row][SmallBlocks[i].col] = blockType;
 	}
+}
+
+int Block::getBlockType()
+{
+	return blockType;
 }

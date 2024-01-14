@@ -11,15 +11,15 @@ class Block
 public:
 	Block();
 	void drop();
-	void moveleftright();
-	void retate();  //旋转
+	void rotate();  //旋转
+	void moveleftright(int offset);
 	void draw(int leftMargin , int topMargin);
 	static IMAGE** getImages();
 	Block& operator =(const Block& other);
     //Point* getSmallBlocks();
 	bool blockInMap(const vector<vector<int>> &map);
 	void solidify(vector<vector<int>>&map);
-	
+	int getBlockType();
 
 private:
 	int blockType;  //方块类型
