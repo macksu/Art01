@@ -8,7 +8,7 @@ const int SPEED_NORMAL[MAX_LEVEL] = { 500,300,150,100,80 };  //ms
 const int SPEED_QUICK = 30;  //加速
 
 Tetris::Tetris(int rows, int cols, int left, int top, int BlockSize)
-{
+{   //初始化
 	this->rows = rows;
 	this->cols = cols;
 	this->leftMargin = left;

@@ -23,8 +23,8 @@ public:
 
 private:
 	int blockType;  //方块类型
-	Point SmallBlocks[4];
-	IMAGE* img;
+	Point SmallBlocks[4];  //方块组成
+	IMAGE* img;   
 
 	static IMAGE* imgs[7];
 	static int Size; //方块大小

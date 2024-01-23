@@ -24,7 +24,7 @@ private:
 	void drop();    //方块下降
 	void ClearLine(); //清行
 	void MoveLeftRight(int offset);
-	void rotate();
+	void rotate();     //旋转
 	void drawScore();  //绘制分数
 	void CheckOver(); //检查游戏是否结束
 	void SaveScore(); //保存分数

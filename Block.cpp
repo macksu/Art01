@@ -105,7 +105,7 @@ bool Block::blockInMap(const vector<vector<int>>&map)
 void Block::solidify(vector<vector<int>>& map)
 {
 	for (int i = 0; i < 4; i++) {
-		//设置标记 
+		//设置标记 固定方块
 		map[SmallBlocks[i].row][SmallBlocks[i].col] = blockType;
 	}
 }
