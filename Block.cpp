@@ -49,7 +49,7 @@ void Block::drop()
 void Block::moveleftright(int offset)
 {
 	for (int i = 0; i < 4; i++) {
-		SmallBlocks[i].col += offset;
+		SmallBlocks[i].col += offset;  //ÒÆ¶¯
 	}
 }
 

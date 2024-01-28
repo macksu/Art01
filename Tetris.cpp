@@ -60,7 +60,7 @@ void Tetris::Init()
 		file >> highScore;
 	}
 	file.close();  //关闭文件
-
+	//游戏结束的标志
 	gameover = false;
 
 }
